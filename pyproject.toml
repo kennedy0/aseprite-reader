@@ -1,6 +1,6 @@
 [project]
-name = "aseprite_reader"
-version = "1.0.0"
+name = "aseprite-reader"
+version = "1.0.0.post1"
 description = "Read and render Aseprite files."
 authors = [{name="Andrew Kennedy"}]
 readme = "README.md"

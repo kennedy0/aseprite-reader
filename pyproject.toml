@@ -1,0 +1,23 @@
+[project]
+name = "aseprite_reader"
+version = "1.0.0"
+description = "Read and render Aseprite files."
+authors = [{name="Andrew Kennedy"}]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["aseprite", "pygame", "game development"]
+
+[project.urls]
+Homepage = "https://github.com/kennedy0/aseprite-reader"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

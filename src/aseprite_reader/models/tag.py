@@ -23,17 +23,17 @@ class Tag:
 
     @property
     def from_frame(self) -> int:
-        """ From frame. """
+        """From frame."""
         return self._from_frame
 
     @property
     def to_frame(self) -> int:
-        """ To frame. """
+        """To frame."""
         return self._to_frame
 
     @property
     def loop_animation_direction(self) -> int:
-        """ Loop animation direction.
+        """Loop animation direction.
         0 = Forward
         1 = Reverse
         2 = Ping-pong
@@ -43,7 +43,7 @@ class Tag:
 
     @property
     def repeat(self) -> int:
-        """ Repeat N times. Play this animation section N times:
+        """Repeat N times. Play this animation section N times:
         0 = Doesn't specify (plays infinite in UI, once on export, for ping-pong it plays once in each direction)
         1 = Plays once (for ping-pong, it plays just in one direction)
         2 = Plays twice (for ping-pong, it plays once in one direction, and once in reverse)
@@ -53,7 +53,7 @@ class Tag:
 
     @property
     def color(self) -> tuple[int, int, int]:
-        """ RGB values of the tag color.
+        """RGB values of the tag color.
         Deprecated, used only for backward compatibility with Aseprite v1.2.x.
         The color of the tag is the one in the user data field following the tags chunk.
         """
@@ -61,7 +61,7 @@ class Tag:
 
     @property
     def name(self) -> str:
-        """ Tag name. """
+        """Tag name."""
         return self._name
 
     def _read_file(self, file: IO) -> None:

@@ -1,5 +1,5 @@
 import os
-from typing import Any, IO, Optional
+from typing import IO, Optional
 
 from aseprite_reader.chunk import Chunk
 from aseprite_reader import utils
@@ -23,12 +23,12 @@ class TilesetChunk(Chunk):
 
     @property
     def tileset_id(self) -> int:
-        """ Tileset ID. """
+        """Tileset ID."""
         return self._tileset_id
 
     @property
     def flags(self) -> int:
-        """ Tileset flags.
+        """Tileset flags.
         1 - Include link to external file
         2 - Include tiles inside this file
         4 - Tilemaps using this tileset use tile ID=0 as empty tile (this is the new format).
@@ -39,22 +39,22 @@ class TilesetChunk(Chunk):
 
     @property
     def tile_count(self) -> int:
-        """ Number of tiles. """
+        """Number of tiles."""
         return self._tile_count
 
     @property
     def tile_width(self) -> int:
-        """ Tile Width. """
+        """Tile Width."""
         return self._tile_width
 
     @property
     def tile_height(self) -> int:
-        """ Tile Height. """
+        """Tile Height."""
         return self._tile_height
 
     @property
     def base_index(self) -> int:
-        """ Base Index: Number to show in the screen from the tile with index 1 and so on
+        """Base Index: Number to show in the screen from the tile with index 1 and so on
         (by default this is field is 1, so the data that is displayed is equivalent to the data in memory).
         But it can be 0 to display zero-based indexing
         (this field isn't used for the representation of the data in the file, it's just for UI purposes).
@@ -63,30 +63,30 @@ class TilesetChunk(Chunk):
 
     @property
     def name(self) -> str:
-        """ Name of the tileset. """
+        """Name of the tileset."""
         return self._name
 
     @property
     def external_file_id(self) -> Optional[int]:
-        """ ID of the external file.
+        """ID of the external file.
         This ID is one entry of the External Files Chunk.
         """
         return self._external_file_id
 
     @property
     def tileset_id_in_external_file(self) -> Optional[int]:
-        """ Tileset ID in external file. """
+        """Tileset ID in external file."""
         return self._tileset_id_in_external_file
 
     @property
     def compressed_data_length(self) -> Optional[int]:
-        """ Compressed data length. """
+        """Compressed data length."""
         return self._compressed_data_length
 
     @property
     def compressed_tileset_image(self) -> Optional[bytes]:
-        """ Compressed Tileset image:
-            (Tile Width) x (Tile Height X Number of Tiles)
+        """Compressed Tileset image:
+        (Tile Width) x (Tile Height X Number of Tiles)
         """
         return self._compressed_tileset_image
 

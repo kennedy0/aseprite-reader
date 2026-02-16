@@ -21,57 +21,57 @@ class SliceKey:
 
     @property
     def frame_number(self) -> int:
-        """ Frame number (this slice is valid form this frame to the end of the animation). """
+        """Frame number (this slice is valid form this frame to the end of the animation)."""
         return self._frame_number
 
     @property
     def x_origin(self) -> int:
-        """ Slice X origin coordinate in the sprite. """
+        """Slice X origin coordinate in the sprite."""
         return self._x_origin
 
     @property
     def y_origin(self) -> int:
-        """ Slice Y origin coordinate in the sprite. """
+        """Slice Y origin coordinate in the sprite."""
         return self._y_origin
 
     @property
     def slice_width(self) -> int:
-        """ Slice width (can be 0 if this slice hidden in the animation from the given frame). """
+        """Slice width (can be 0 if this slice hidden in the animation from the given frame)."""
         return self._slice_width
 
     @property
     def slice_height(self) -> int:
-        """ Slice height. """
+        """Slice height."""
         return self._slice_height
 
     @property
     def center_x(self) -> Optional[int]:
-        """ Center X position (relative to slice bounds). """
+        """Center X position (relative to slice bounds)."""
         return self._center_x
 
     @property
     def center_y(self) -> Optional[int]:
-        """ Center Y position. """
+        """Center Y position."""
         return self._center_y
 
     @property
     def center_w(self) -> Optional[int]:
-        """ Center width. """
+        """Center width."""
         return self._center_w
 
     @property
     def center_h(self) -> Optional[int]:
-        """ Center height. """
+        """Center height."""
         return self._center_h
 
     @property
     def pivot_x(self) -> Optional[int]:
-        """ Pivot X position (relative to the slice origin). """
+        """Pivot X position (relative to the slice origin)."""
         return self._pivot_x
 
     @property
     def pivot_y(self) -> Optional[int]:
-        """ Pivot Y position (relative to the slice origin). """
+        """Pivot Y position (relative to the slice origin)."""
         return self._pivot_y
 
     def _read_file(self, file: IO, flags: int) -> None:

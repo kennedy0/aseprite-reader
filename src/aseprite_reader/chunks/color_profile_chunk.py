@@ -1,12 +1,13 @@
 import os
-from typing import Any, IO, Optional
+from typing import IO, Optional
 
 from aseprite_reader.chunk import Chunk
 from aseprite_reader import utils
 
 
 class ColorProfileChunk(Chunk):
-    """ Color profile for RGB or grayscale values. """
+    """Color profile for RGB or grayscale values."""
+
     def __init__(self, file: IO) -> None:
         self._profile_type = 0
         self._flags = 0
@@ -18,7 +19,7 @@ class ColorProfileChunk(Chunk):
 
     @property
     def profile_type(self) -> int:
-        """ Type.
+        """Type.
         0 - no color profile (as in old .aseprite files)
         1 - use sRGB
         2 - use the embedded ICC profile
@@ -27,14 +28,14 @@ class ColorProfileChunk(Chunk):
 
     @property
     def flags(self) -> int:
-        """ Flags.
+        """Flags.
         1 - use special fixed gamma
         """
         return self._flags
 
     @property
     def fixed_gamma(self) -> float:
-        """ Fixed gamma (1.0 = linear).
+        """Fixed gamma (1.0 = linear).
         Note: The gamma in sRGB is 2.2 in overall but it doesn't use this fixed gamma,
         because sRGB uses different gamma sections (linear and non-linear).
         If sRGB is specified with a fixed gamma = 1.0, it means that this is Linear sRGB.
@@ -43,12 +44,12 @@ class ColorProfileChunk(Chunk):
 
     @property
     def icc_profile_data_length(self) -> Optional[int]:
-        """ ICC profile data length. """
+        """ICC profile data length."""
         return self._icc_profile_data_length
 
     @property
     def icc_profile_data(self) -> Optional[bytes]:
-        """ ICC profile data.
+        """ICC profile data.
         More info: http://www.color.org/ICC1V42.pdf
         """
         return self._icc_profile_data

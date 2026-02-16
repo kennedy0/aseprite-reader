@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 def frame_to_image(aseprite_file: AsepriteFile, frame: Frame) -> Image.Image:
-    """ Produce an image from frame data. """
+    """Produce an image from frame data."""
     # Initialize frame image
     frame_image = Image.new(mode="RGBA", size=(aseprite_file.header.width, aseprite_file.header.height))
 
@@ -42,7 +42,7 @@ def frame_to_image(aseprite_file: AsepriteFile, frame: Frame) -> Image.Image:
 
 
 def layer_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk) -> Optional[Image.Image]:
-    """ Produce an image from layer data. """
+    """Produce an image from layer data."""
     match layer.layer_type:
         case 0:
             return _normal_layer_to_image(aseprite_file, frame, layer)
@@ -55,7 +55,7 @@ def layer_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk)
 
 
 def _normal_layer_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk) -> Optional[Image.Image]:
-    """ Produce an image from a normal layer. """
+    """Produce an image from a normal layer."""
     cel = aseprite_file.cel(frame, layer)
     if cel:
         cel_image = cel_to_image(aseprite_file, frame, layer, cel)
@@ -63,17 +63,17 @@ def _normal_layer_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: Lay
 
 
 def _group_layer_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk) -> Image.Image:
-    """ Produce an image from a group layer. """
+    """Produce an image from a group layer."""
     raise NotImplementedError("Group rendering is not implemented.")
 
 
 def _tilemap_layer_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk) -> Image.Image:
-    """ Produce an image from a tilemap layer. """
+    """Produce an image from a tilemap layer."""
     raise NotImplementedError("Tilemap rendering is not implemented.")
 
 
 def cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk, cel: CelChunk) -> Image.Image:
-    """ Produce an image from cel data. """
+    """Produce an image from cel data."""
     match cel.cel_type:
         case 0:
             return _raw_image_cel_to_image(aseprite_file, frame, layer, cel)
@@ -88,17 +88,17 @@ def cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk, c
 
 
 def _raw_image_cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk, cel: CelChunk) -> Image.Image:
-    """ Produce an image from a compressed image cel. """
+    """Produce an image from a compressed image cel."""
     raise NotImplementedError("Raw image cel rendering is not implemented.")
 
 
 def _linked_cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk, cel: CelChunk) -> Image.Image:
-    """ Produce an image from a linked cel. """
+    """Produce an image from a linked cel."""
     raise NotImplementedError("Linked cel rendering is not implemented.")
 
 
 def _image_cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk, cel: CelChunk) -> Image.Image:
-    """ Produce an image from a compressed image cel. """
+    """Produce an image from a compressed image cel."""
     # Create new image
     cel_image = Image.new(mode="RGBA", size=(aseprite_file.header.width, aseprite_file.header.height))
 
@@ -124,5 +124,5 @@ def _image_cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerC
 
 
 def _tilemap_cel_to_image(aseprite_file: AsepriteFile, frame: Frame, layer: LayerChunk, cel: CelChunk) -> Image.Image:
-    """ Produce an image from a tilemap cel. """
+    """Produce an image from a tilemap cel."""
     raise NotImplementedError("Tilemap cel rendering is not implemented.")

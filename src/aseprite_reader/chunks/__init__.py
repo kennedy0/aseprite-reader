@@ -12,3 +12,20 @@ from .slice_chunk import SliceChunk
 from .tags_chunk import TagsChunk
 from .tileset_chunk import TilesetChunk
 from .user_data_chunk import UserDataChunk
+
+__all__ = [
+    "CelChunk",
+    "CelExtraChunk",
+    "ColorProfileChunk",
+    "ExternalFilesChunk",
+    "LayerChunk",
+    "MaskChunk",
+    "OldPaletteChunk04",
+    "OldPaletteChunk11",
+    "PaletteChunk",
+    "PathChunk",
+    "SliceChunk",
+    "TagsChunk",
+    "TilesetChunk",
+    "UserDataChunk",
+]

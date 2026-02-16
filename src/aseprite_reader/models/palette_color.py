@@ -22,29 +22,29 @@ class PaletteColor:
 
     @property
     def flags(self) -> int:
-        """ Entry flags:
+        """Entry flags:
         1 = Has name
         """
         return self._flags
 
     @property
     def r(self) -> int:
-        """ Red (0-255). """
+        """Red (0-255)."""
         return self._r
 
     @property
     def g(self) -> int:
-        """ Green (0-255). """
+        """Green (0-255)."""
         return self._g
 
     @property
     def b(self) -> int:
-        """ Blue (0-255). """
+        """Blue (0-255)."""
         return self._b
 
     @property
     def a(self) -> int:
-        """ Alpha (0-255). """
+        """Alpha (0-255)."""
         return self._a
 
     @property

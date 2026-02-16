@@ -17,22 +17,22 @@ class PaletteChunk(Chunk):
 
     @property
     def palette_size(self) -> int:
-        """ New palette size (total number of entries). """
+        """New palette size (total number of entries)."""
         return self._palette_size
 
     @property
     def first_index_to_change(self) -> int:
-        """ First color index to change. """
+        """First color index to change."""
         return self._first_index_to_change
 
     @property
     def last_index_to_change(self) -> int:
-        """ Last color index to change. """
+        """Last color index to change."""
         return self._last_index_to_change
 
     @property
     def palette_colors(self) -> list[PaletteColor]:
-        """ A list of colors in this palette. """
+        """A list of colors in this palette."""
         return self._palette_colors
 
     def _read_file(self, file: IO) -> None:

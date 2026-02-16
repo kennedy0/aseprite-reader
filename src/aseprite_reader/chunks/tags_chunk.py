@@ -7,7 +7,8 @@ from aseprite_reader.models import Tag
 
 
 class TagsChunk(Chunk):
-    """ Stores the tags in the file. """
+    """Stores the tags in the file."""
+
     def __init__(self, file: IO) -> None:
         self._tag_count = 0
         self._tags = []
@@ -16,12 +17,12 @@ class TagsChunk(Chunk):
 
     @property
     def tag_count(self) -> int:
-        """ Number of tags. """
+        """Number of tags."""
         return self._tag_count
 
     @property
     def tags(self) -> list[Tag]:
-        """ A list of tags in the file. """
+        """A list of tags in the file."""
         return self._tags
 
     def _read_file(self, file: IO) -> None:

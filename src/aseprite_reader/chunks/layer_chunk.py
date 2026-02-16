@@ -6,7 +6,8 @@ from aseprite_reader import utils
 
 
 class LayerChunk(Chunk):
-    """ In the first frame should be a set of layer chunks to determine the entire layers layout. """
+    """In the first frame should be a set of layer chunks to determine the entire layers layout."""
+
     def __init__(self, file: IO) -> None:
         self._flags = 0
         self._layer_type = 0
@@ -28,7 +29,7 @@ class LayerChunk(Chunk):
 
     @property
     def flags(self) -> int:
-        """ Flags.
+        """Flags.
         1 = Visible
         2 = Editable
         4 = Lock movement
@@ -41,12 +42,12 @@ class LayerChunk(Chunk):
 
     @property
     def visible(self) -> bool:
-        """ Layer visibility. """
+        """Layer visibility."""
         return utils.flag_is_set(self.flags, 1)
 
     @property
     def layer_type(self) -> int:
-        """ Layer type.
+        """Layer type.
         0 = Normal (image) layer
         1 = Group
         2 = Tilemap
@@ -55,7 +56,7 @@ class LayerChunk(Chunk):
 
     @property
     def layer_child_level(self) -> int:
-        """ The child level is used to show the relationship of this layer with the last one read, for example:
+        """The child level is used to show the relationship of this layer with the last one read, for example:
         Layer name and hierarchy      Child Level
         -----------------------------------------------
         - Background                  0
@@ -69,17 +70,17 @@ class LayerChunk(Chunk):
 
     @property
     def default_layer_width(self) -> int:
-        """ Default layer width in pixels (ignored). """
+        """Default layer width in pixels (ignored)."""
         return self._default_layer_width
 
     @property
     def default_layer_height(self) -> int:
-        """ Default layer height in pixels (ignored). """
+        """Default layer height in pixels (ignored)."""
         return self._default_layer_height
 
     @property
     def blend_mode(self) -> int:
-        """ Blend mode (always 0 for layer set)
+        """Blend mode (always 0 for layer set)
         Normal         = 0
         Multiply       = 1
         Screen         = 2
@@ -104,19 +105,19 @@ class LayerChunk(Chunk):
 
     @property
     def opacity(self) -> int:
-        """ Opacity.
+        """Opacity.
         Note: valid only if file header flags field has bit 1 set
         """
         return self._opacity
 
     @property
     def layer_name(self) -> str:
-        """ Layer name. """
+        """Layer name."""
         return self._layer_name
 
     @property
     def tileset_index(self) -> Optional[int]:
-        """ Tileset index.
+        """Tileset index.
         Only set if layer type = 2.
         """
         return self._tileset_index

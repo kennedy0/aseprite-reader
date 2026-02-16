@@ -3,6 +3,8 @@ from typing import IO
 
 from aseprite_reader import utils
 
+ASEPRITE_MAGIC_NUMBER = 0xA5E0
+
 
 class Header:
     def __init__(self, file: IO):
@@ -26,22 +28,22 @@ class Header:
 
     @property
     def file_size(self) -> int:
-        """ The size of the file """
+        """The size of the file"""
         return self._file_size
 
     @property
     def frame_count(self) -> int:
-        """ The number of frames in the file. """
+        """The number of frames in the file."""
         return self._frame_count
 
     @property
     def width(self) -> int:
-        """ Width in pixels. """
+        """Width in pixels."""
         return self._width
 
     @property
     def height(self) -> int:
-        """ Height in pixels. """
+        """Height in pixels."""
         return self._height
 
     @property
@@ -54,7 +56,7 @@ class Header:
 
     @property
     def flags(self) -> int:
-        """ Flags
+        """Flags
         1 = Layer opacity has valid value
         """
         return self._flags
@@ -65,21 +67,21 @@ class Header:
 
     @property
     def speed(self) -> int:
-        """ Speed (milliseconds between frame, like in FLC files)
+        """Speed (milliseconds between frame, like in FLC files)
         DEPRECATED: You should use the frame duration field from each frame header.
         """
         return self._speed
 
     @property
     def transparent_color_index(self) -> int:
-        """ Palette entry (index) which represent transparent color in all non-background layers
+        """Palette entry (index) which represent transparent color in all non-background layers
         (only for Indexed sprites).
         """
         return self._transparent_color_index
 
     @property
     def colors(self) -> int:
-        """ Number of colors (0 means 256 for old sprites). """
+        """Number of colors (0 means 256 for old sprites)."""
         if self._colors == 0:
             return 256
         else:
@@ -87,17 +89,17 @@ class Header:
 
     @property
     def pixel_width(self) -> int:
-        """ Pixel width. """
+        """Pixel width."""
         return self._pixel_width
 
     @property
     def pixel_height(self) -> int:
-        """ Pixel height. """
+        """Pixel height."""
         return self._pixel_height
 
     @property
     def pixel_aspect_ratio(self) -> float:
-        """ Pixel aspect ratio.
+        """Pixel aspect ratio.
         If pixel width or pixel height field is zero, the pixel ratio is 1:1.
         """
         if self._pixel_width == 0 or self._pixel_height == 0:
@@ -107,26 +109,33 @@ class Header:
 
     @property
     def grid_x(self) -> int:
-        """ X position of the grid. """
+        """X position of the grid."""
         return self._grid_x
 
     @property
     def grid_y(self) -> int:
-        """ Y position of the grid. """
+        """Y position of the grid."""
         return self._grid_y
 
     @property
     def grid_width(self) -> int:
-        """ Grid width (zero if there is no grid, grid size is 16x16 on Aseprite by default). """
+        """Grid width (zero if there is no grid, grid size is 16x16 on Aseprite by default)."""
         return self._grid_width
 
     @property
     def grid_height(self) -> int:
-        """ Grid height. """
+        """Grid height."""
         return self._grid_height
 
     def _read_file(self, file: IO):
-        """ Read header data. """
+        """Read header data."""
+        file.seek(4)
+        if magic_number := utils.read_word(file) != ASEPRITE_MAGIC_NUMBER:
+            raise RuntimeError(
+                f"Not a valid Aseprite file; magic number {hex(ASEPRITE_MAGIC_NUMBER)} expected (found {hex(magic_number)})"
+            )
+
+        file.seek(0)
         self._file_size = utils.read_dword(file)
         self._magic_number = utils.read_word(file)
         self._frame_count = utils.read_word(file)

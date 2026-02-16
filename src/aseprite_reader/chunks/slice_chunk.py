@@ -16,12 +16,12 @@ class SliceChunk(Chunk):
 
     @property
     def slice_key_count(self) -> int:
-        """ Number of slice keys. """
+        """Number of slice keys."""
         return self._slice_key_count
 
     @property
     def flags(self) -> int:
-        """ Flags.
+        """Flags.
         1 = It's a 9-patches slice
         2 = Has pivot information
         """
@@ -29,7 +29,7 @@ class SliceChunk(Chunk):
 
     @property
     def name(self) -> str:
-        """ Name """
+        """Name"""
         return self._name
 
     @property

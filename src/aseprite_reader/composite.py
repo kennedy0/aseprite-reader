@@ -2,7 +2,7 @@ from PIL import Image
 
 
 def composite(bg: Image.Image, fg: Image.Image, blend_mode: int = 0, fg_opacity: int = 255) -> Image.Image:
-    """ Composite a background image onto a foreground image. """
+    """Composite a background image onto a foreground image."""
     # Apply fg opacity
     if fg_opacity < 255:
         _apply_opacity(fg, fg_opacity)
@@ -54,7 +54,7 @@ def composite(bg: Image.Image, fg: Image.Image, blend_mode: int = 0, fg_opacity:
 
 
 def _apply_opacity(image: Image.Image, opacity: int) -> None:
-    """ Apply an opacity value (0-255) to an image. """
+    """Apply an opacity value (0-255) to an image."""
     # Don't need to change the image if there is full opacity
     if opacity == 255:
         return
@@ -75,95 +75,95 @@ def _apply_opacity(image: Image.Image, opacity: int) -> None:
 
 
 def _blend_normal(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Normal blend mode. """
+    """Normal blend mode."""
     return Image.alpha_composite(bg, fg)
 
 
 def _blend_multiply(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Multiply blend mode. """
+    """Multiply blend mode."""
     raise NotImplementedError("Multiply blend mode is not implemented.")
 
 
 def _blend_screen(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Screen blend mode. """
+    """Screen blend mode."""
     raise NotImplementedError("Screen blend mode is not implemented.")
 
 
 def _blend_overlay(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Overlay blend mode. """
+    """Overlay blend mode."""
     raise NotImplementedError("Overlay blend mode is not implemented.")
 
 
 def _blend_darken(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Darken blend mode. """
+    """Darken blend mode."""
     raise NotImplementedError("Darken blend mode is not implemented.")
 
 
 def _blend_lighten(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Lighten blend mode. """
+    """Lighten blend mode."""
     raise NotImplementedError("Lighten blend mode is not implemented.")
 
 
 def _blend_color_dodge(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Color dodge blend mode. """
+    """Color dodge blend mode."""
     raise NotImplementedError("Color dodge blend mode is not implemented.")
 
 
 def _blend_color_burn(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Color burn blend mode. """
+    """Color burn blend mode."""
     raise NotImplementedError("Color burn blend mode is not implemented.")
 
 
 def _blend_hard_light(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Hard light blend mode. """
+    """Hard light blend mode."""
     raise NotImplementedError("Hard light blend mode is not implemented.")
 
 
 def _blend_soft_light(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Soft light blend mode. """
+    """Soft light blend mode."""
     raise NotImplementedError("Soft light blend mode is not implemented.")
 
 
 def _blend_difference(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Difference blend mode. """
+    """Difference blend mode."""
     raise NotImplementedError("Difference blend mode is not implemented.")
 
 
 def _blend_exclusion(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Exclusion blend mode. """
+    """Exclusion blend mode."""
     raise NotImplementedError("Exclusion blend mode is not implemented.")
 
 
 def _blend_hue(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Hue blend mode. """
+    """Hue blend mode."""
     raise NotImplementedError("Hue blend mode is not implemented.")
 
 
 def _blend_saturation(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Saturation blend mode. """
+    """Saturation blend mode."""
     raise NotImplementedError("Saturation blend mode is not implemented.")
 
 
 def _blend_color(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Color blend mode. """
+    """Color blend mode."""
     raise NotImplementedError("Color blend mode is not implemented.")
 
 
 def _blend_luminosity(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Luminosity blend mode. """
+    """Luminosity blend mode."""
     raise NotImplementedError("Luminosity blend mode is not implemented.")
 
 
 def _blend_addition(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Addition blend mode. """
+    """Addition blend mode."""
     raise NotImplementedError("Add blend mode is not implemented.")
 
 
 def _blend_subtract(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Subtract blend mode. """
+    """Subtract blend mode."""
     raise NotImplementedError("Subtract blend mode is not implemented.")
 
 
 def _blend_divide(bg: Image.Image, fg: Image.Image) -> Image.Image:
-    """ Divide blend mode. """
+    """Divide blend mode."""
     raise NotImplementedError("Divide blend mode is not implemented.")

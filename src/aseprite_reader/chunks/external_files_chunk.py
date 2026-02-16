@@ -7,7 +7,8 @@ from aseprite_reader.models import ExternalFile
 
 
 class ExternalFilesChunk(Chunk):
-    """ A list of external files linked with this file. It might be used to reference external palettes or tilesets. """
+    """A list of external files linked with this file. It might be used to reference external palettes or tilesets."""
+
     def __init__(self, file: IO) -> None:
         self._entry_count = 0
         self._external_files = []
@@ -16,7 +17,7 @@ class ExternalFilesChunk(Chunk):
 
     @property
     def entry_count(self) -> int:
-        """ Number of entries. """
+        """Number of entries."""
         return self._entry_count
 
     def _read_file(self, file: IO) -> None:

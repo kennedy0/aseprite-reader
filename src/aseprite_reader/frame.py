@@ -21,12 +21,12 @@ class Frame:
 
     @property
     def duration(self) -> int:
-        """ Frame duration (in milliseconds) """
+        """Frame duration (in milliseconds)"""
         return self._duration
 
     @property
     def chunk_count(self) -> int:
-        """ Number of chunks in this frame.
+        """Number of chunks in this frame.
         If the new chunk field is 0, use the old field.
         """
         if self._chunk_count_new == 0:
@@ -36,12 +36,12 @@ class Frame:
 
     @property
     def chunks(self) -> list[Chunk]:
-        """ A list of chunks in this frame. """
+        """A list of chunks in this frame."""
         return self._chunks
-    
+
     @property
     def cels(self) -> list[CelChunk]:
-        """ A list of cels in this frame. """
+        """A list of cels in this frame."""
         cels = []
         for chunk in self.chunks:
             if isinstance(chunk, CelChunk):
@@ -50,11 +50,11 @@ class Frame:
         return cels
 
     def _go_to_end_of_frame(self, file: IO) -> None:
-        """ Move the file position to the end of the frame. """
+        """Move the file position to the end of the frame."""
         file.seek(self._offset + self._size)
 
     def _read_file(self, file: IO):
-        """ Read frame data. """
+        """Read frame data."""
         self._offset = file.tell()
         self._size = utils.read_dword(file)
         self._magic_number = utils.read_word(file)

@@ -19,12 +19,12 @@ class ExternalFile:
 
     @property
     def entry_id(self) -> int:
-        """ Entry ID (this ID is referenced by tilesets or palettes). """
+        """Entry ID (this ID is referenced by tilesets or palettes)."""
         return self._entry_id
 
     @property
     def file_name(self) -> str:
-        """ External file name. """
+        """External file name."""
         return self._file_name
 
     def _read_file(self, file: IO) -> None:

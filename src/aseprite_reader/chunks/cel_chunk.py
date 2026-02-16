@@ -6,7 +6,8 @@ from aseprite_reader import utils
 
 
 class CelChunk(Chunk):
-    """ This chunk determine where to put a cel in the specified layer/frame. """
+    """This chunk determine where to put a cel in the specified layer/frame."""
+
     def __init__(self, file: IO) -> None:
         self._layer_index = 0
         self._x_position = 0
@@ -31,7 +32,7 @@ class CelChunk(Chunk):
 
     @property
     def layer_index(self) -> int:
-        """ Layer index.
+        """Layer index.
         The layer index is a number to identify any layer in the sprite, for example:
         Layer name and hierarchy      Layer index
         -----------------------------------------------
@@ -46,22 +47,22 @@ class CelChunk(Chunk):
 
     @property
     def x_position(self) -> int:
-        """ X position. """
+        """X position."""
         return self._x_position
 
     @property
     def y_position(self) -> int:
-        """ Y position. """
+        """Y position."""
         return self._y_position
 
     @property
     def opacity_level(self) -> int:
-        """ Opacity level. """
+        """Opacity level."""
         return self._opacity_level
 
     @property
     def cel_type(self) -> int:
-        """ Cel type.
+        """Cel type.
         0 - Raw Image Data (unused, compressed image is preferred)
         1 - Linked Cel
         2 - Compressed Image
@@ -71,67 +72,67 @@ class CelChunk(Chunk):
 
     @property
     def width(self) -> Optional[int]:
-        """ Width in pixels. """
+        """Width in pixels."""
         return self._width
 
     @property
     def height(self) -> Optional[int]:
-        """ Height in pixels. """
+        """Height in pixels."""
         return self._height
 
     @property
     def raw_pixel_data(self) -> Optional[list[Any]]:
-        """ Raw pixel data: row by row from top to bottom, for each scanline read pixels from left to right. """
+        """Raw pixel data: row by row from top to bottom, for each scanline read pixels from left to right."""
         return self._raw_pixel_data
 
     @property
     def linked_frame_position(self) -> Optional[int]:
-        """ Frame position to link with. """
+        """Frame position to link with."""
         return self._linked_frame_position
 
     @property
     def compressed_image_data(self) -> Optional[bytes]:
-        """ 'Raw Cel' data compressed with ZLIB method. """
+        """'Raw Cel' data compressed with ZLIB method."""
         return self._compressed_image_data
 
     @property
     def width_tiles(self) -> Optional[int]:
-        """ Width in number of tiles. """
+        """Width in number of tiles."""
         return self._width_tiles
 
     @property
     def height_tiles(self) -> Optional[int]:
-        """ Height in number of tiles. """
+        """Height in number of tiles."""
         return self._height_tiles
 
     @property
     def bits_per_tile(self) -> Optional[int]:
-        """ Bits per tile (at the moment it's always 32-bit per tile). """
+        """Bits per tile (at the moment it's always 32-bit per tile)."""
         return self._bits_per_tile
 
     @property
     def bitmask_tile_id(self) -> Optional[int]:
-        """ Bitmask for tile ID (e.g. 0x1fffffff for 32-bit tiles). """
+        """Bitmask for tile ID (e.g. 0x1fffffff for 32-bit tiles)."""
         return self._bitmask_tile_id
 
     @property
     def bitmask_x_flip(self) -> Optional[int]:
-        """ Bitmask for X flip. """
+        """Bitmask for X flip."""
         return self._bitmask_x_flip
 
     @property
     def bitmask_y_flip(self) -> Optional[int]:
-        """ Bitmask for Y flip. """
+        """Bitmask for Y flip."""
         return self._bitmask_y_flip
 
     @property
     def bitmask_90cw_rotation(self) -> Optional[int]:
-        """ Bitmask for 90CW rotation. """
+        """Bitmask for 90CW rotation."""
         return self._bitmask_90cw_rotation
 
     @property
     def compressed_tile_data(self) -> Optional[bytes]:
-        """ Row by row, from top to bottom tile by tile compressed with ZLIB method. """
+        """Row by row, from top to bottom tile by tile compressed with ZLIB method."""
         return self._compressed_tile_data
 
     def _read_file(self, file: IO) -> None:
